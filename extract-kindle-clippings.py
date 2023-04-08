@@ -223,12 +223,11 @@ for key in pub_title.keys():
         out.write(('-' * len(titlestr)) + '\n\n')
     elif not newfile:
         # Many notes, output with header and metadata in a separate file
-        titlestr = 'Highlights from ' + title
+        titlestr = '# ' + title
         out.write(titlestr + '\n')
-        out.write(('=' * len(titlestr)) + '\n\n')
         if author != 'Unknown':
-            out.write('Authors:: [[' + author + ']]' + '\n')
-        out.write('Recommended By:: \nTags:: [[📚 Books]]\n\n# ' + title + '\n\n### Highlights\n')
+            out.write('Authors:: ' + author +  '\n')
+        out.write('Tags:: [[📚 Books]]\nTitle:: ' + title + '\n\n - ### Highlights\n')
 
     last_date = datetime.now()
 
@@ -249,7 +248,7 @@ for key in pub_title.keys():
 
             # this adds metadata before each note.
             # out.write(comment + '\n\n')
-            out.write('- ' + note + '\n')
+            out.write('  - ' + note + '\n')
         try:
             last_date = parse(note_date)
         except:
